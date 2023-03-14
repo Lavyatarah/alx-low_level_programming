@@ -1,41 +1,41 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 /**
- * str_concat -  Entry point
- *@s1: char
- *@s2: char
- * Return: Always 0.
+ * str_concat - Main Entry
+ * @s1: input
+ * @s2: input
+ * Return: 0
  */
 char *str_concat(char *s1, char *s2)
 {
-	int i, j, k, l;
-	char *p;
+	unsigned int size1 = 0, size2 = 0;
+	char *ptr, *ret;
 
-	if (s1 == NULL)
-	{
+	ptr = s1;
+	if (s1)
+		while (*ptr++)
+			size1++;
+	else
 		s1 = "";
-	}
-	if (s2 == NULL)
-	{
+
+	ptr = s2;
+	if (s2)
+		while (*ptr++)
+			size2++;
+	else
 		s2 = "";
-	}
-	for (i = 0; *(s1 + i) != '\0'; i++)
-	{}
-	for (j = 0 ; *(s2 + j) != '\0' ; j++)
-	{}
-	p = malloc(sizeof(char) * (i + j + 1));
-	if (p == NULL)
-	{
+
+	ret = malloc(size1 + size2 + 1);
+	if (!ret)
 		return (NULL);
-	}
-	for (k = 0; k < i; k++)
-	{
-		*(p + k) = *(s1 + k);
-	}
-	for (l = 0; l < j; l++)
-	{
-		*(p + (i + l)) = *(s2 + l);
-	}
-	p[i + j] = '\0';
-	return (p);
+
+	ptr = ret;
+	while (*s1)
+		*ptr++ = *s1++;
+	while (*s2)
+		*ptr++ = *s2++;
+	*ptr = 0;
+
+	return (ret);
 }

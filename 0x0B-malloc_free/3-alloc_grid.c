@@ -1,38 +1,39 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 /**
- * alloc_grid -  Entry point
- *@width: int
- *@height: int
- * Return: Always 0.
+ * alloc_grid - Main Enry
+ * @width: input
+ * @height: input
+ * Return: 0
  */
 int **alloc_grid(int width, int height)
 {
-	int i;
-	int j;
-	int **s;
+	int **grid;
+	int i, j;
 
 	if (width <= 0 || height <= 0)
-	{
 		return (NULL);
-	}
-	s = (int **)malloc(sizeof(int *) * height);
-	if (s == NULL)
-	{
+
+	grid = malloc(height * sizeof(int *));
+	if (grid == NULL)
 		return (NULL);
-	}
-	for (i = 0 ; i < height ; i++)
+
+	for (i = 0; i < height; i++)
 	{
-		s[i] = (int *)malloc(sizeof(int) * width);
-		if (s[i] == NULL)
+		grid[i] = malloc(width * sizeof(int));
+		if (grid[i] == NULL)
 		{
-			for (i-- ; i >= 0 ; i--)
-				free(s[i]);
-			free(s);
+			while (i >= 0)
+				free(grid[i--]);
+			free(grid);
 			return (NULL);
 		}
-		for (j = 0; j < width ; j++)
-			s[i][j] = 0;
+
+
+		for (j = 0; j < width; j++)
+			grid[i][j] = 0;
 	}
-	return (s);
+
+	return (grid);
 }

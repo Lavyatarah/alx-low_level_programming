@@ -1,32 +1,39 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * _strdup -  Entry point
- *@str: char
- * Return: Always 0.
+ * _strdup - Main Entry
+ * @str: input
+ * Return: 0
  */
 char *_strdup(char *str)
 {
-	int i;
-	int j;
-	char *p;
+	char *nstr;
+	unsigned int len, i;
 
-	if (str == 0)
+	/* check is str is null */
+	if (str == NULL)
 	{
 		return (NULL);
 	}
-	for (j = 0 ; str[j] != '\0' ; j++)
+
+	len = 0;
+	while (str[len] != '\0')
 	{
+		len++;
 	}
-	p = malloc(sizeof(char) * (j + 1));
-	if (p == 0)
+
+	nstr = malloc(sizeof(char) * (len + 1));
+
+	/*check if malloc was successful*/
+	if (nstr == NULL)
 	{
 		return (NULL);
 	}
-	for (i = 0; *(str + i) != '\0'; i++)
+
+	for (i = 0; i < len; i++)
 	{
-		*(p + i) = *(str + i);
+		nstr[i] = str[i];
 	}
-	*(p + i) = '\0';
-	return (p);
+	nstr[len] = '\0';
+	return (nstr);
 }
