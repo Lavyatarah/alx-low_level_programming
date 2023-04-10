@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -7,7 +8,7 @@
  *         If little-endian - 1.
  */
 
-int get_endianness(void)
+int get_endianness (void)
 {
 	int num = 1;
 	char *endian = (char *)&num;
@@ -16,4 +17,5 @@ int get_endianness(void)
 		return (1);
 
 	return (0);
+
 }
