@@ -1,1 +1,1 @@
-ELF
+gcc *.c -c -fPIC
