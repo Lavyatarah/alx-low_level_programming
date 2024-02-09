@@ -11,17 +11,17 @@
  * Return: Always EXIT_SUCCESS
  */
 int linear_search(int *array, size_t size, int value)
+
 {
-	int i;
+	size_t inc;
 
 	if (array == NULL)
 		return (-1);
-
-	for (i = 0; i < (int)size; i++)
+	for (inc = 0; inc < size; inc++)
 	{
-		printf("Value checked array[%u] = [%d]\n", i, array[i]);
-		if (value == array[i])
-			return (i);
+		printf("Value checked array[%ld] = [%d]\n", inc, array[inc]);
+		if (array[inc] == value)
+			return (inc);
 	}
 	return (-1);
 }
